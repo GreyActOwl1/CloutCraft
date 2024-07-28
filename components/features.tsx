@@ -4,11 +4,11 @@ export default function Features() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
 
-          {/* Section header */}
+          {/* Section header
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className="h2 mb-4">Struggling to Stand Out on LinkedIn?</h2>
             <p className="text-xl text-gray-400">CloutCraft helps tech professionals optimize their profiles, create engaging content, and manage connections to attract the right opportunities.</p>
-          </div>
+          </div> */}
 
           {/* Items */}
           <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 items-start md:max-w-2xl lg:max-w-none" data-aos-id-blocks>
@@ -75,7 +75,7 @@ export default function Features() {
               <p className="text-lg text-gray-400 text-center">Access detailed insights into your LinkedIn activity. Track connection growth, analyze engagement, generate reports, and see who viewed your profile.</p>
             </div>
 
-            {/* 6th item 
+             {/* 6th item  */}
             <div className="relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="500" data-aos-anchor="[data-aos-id-blocks]">
               <svg className="w-16 h-16 mb-4" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <rect className="fill-current text-purple-600" width="64" height="64" rx="32" />
@@ -85,9 +85,10 @@ export default function Features() {
                   <path className="stroke-current text-purple-100" d="M8.86 1.18C3.8 1.988 0 5.6 0 10c0 5 4.9 9 11 9a10.55 10.55 0 003.1-.4L20 21l-.6-5.2a9.125 9.125 0 001.991-2.948" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Instant Features</h4>
-              <p className="text-lg text-gray-400 text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.</p>
-            </div>*/}
+              <h4 className="h4 mb-2">Content Planning</h4>
+              <p className="text-lg text-gray-400 text-center">Organize your LinkedIn content with a comprehensive schedule.
+Set reminders for upcoming posts and ensure a consistent online presence.</p>
+            </div>
 
           </div>
 

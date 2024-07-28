@@ -58,7 +58,7 @@ export default function Features() {
                   <circle className="stroke-current text-purple-300" cx="13" cy="9" r="3" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Message Assitance</h4>
+              <h4 className="h4 mb-2">Message Assistance</h4>
               <p className="text-lg text-gray-400 text-center">Improve your communication with customized message templates. Schedule messages and set follow-up reminders to maintain your networking flow.</p>
             </div>
 

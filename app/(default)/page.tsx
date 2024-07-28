@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Home - Open PRO',
-  description: 'Page description',
+  title: 'CloutCraft | Supercharge Your LinkedIn Experience',
+  description: '',
 }
 
 import Hero from '@/components/hero'

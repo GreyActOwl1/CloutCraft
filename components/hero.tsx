@@ -26,8 +26,8 @@ export default function Hero() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">Landing template for startups</h1>
-            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
+            <h1 className="h1 mb-4" data-aos="fade-up">Supercharge Your LinkedIn Experience with CloutCraft</h1>
+            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">Optimize your profile, create engaging content, manage your network, and boost your career growth—all with the power of AI.</p>  
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Link href="/generate-post" legacyBehavior>
@@ -36,25 +36,18 @@ export default function Hero() {
                   </a>
                   </Link>
               </div>
-              <div data-aos="fade-up" data-aos-delay="600">
-              <button
-                  className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
-                >
-                  Analyse your profile
-                </button>
-              </div>
             </div>
           </div>
 
-          <ModalVideo
+          {/* <ModalVideo
             thumb={VideoThumb}
             thumbWidth={1024}
             thumbHeight={576}
             thumbAlt="Modal video thumbnail"
             video="/videos/video.mp4"
             videoWidth={1920}
-            videoHeight={1080} />
-
+            videoHeight={1080} /> */}
+            {/* <img src="../public/images/cloutcraft-thumbnail.jpg" alt="Image" className="w-full h-auto" /> */}
         </div>
 
       </div>

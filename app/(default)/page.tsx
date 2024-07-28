@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Home - Open PRO',
-  description: 'Page description',
+  title: 'CloutCraft | Supercharge Your LinkedIn Experience',
+  description: '',
 }
 
 import Hero from '@/components/hero'
@@ -14,10 +14,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+      {/*<Newsletter />*/}
       <Features />
       <Zigzag />
       <Testimonials />
-      <Newsletter />
       <Link href="/default/generate">Generate a Post!</Link>
     </>
   )

@@ -1,6 +1,6 @@
 import VideoThumb from '@/public/images/hero-image-01.jpg'
 import ModalVideo from '@/components/modal-video'
-import Link from 'next/link';
+import Link from 'next/link'
 
 export default function Hero() {
   return (
@@ -29,15 +29,12 @@ export default function Hero() {
             <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">Optimize your profile, create engaging content, manage your network, and boost your career growth—all with the power of AI.</p>  
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <Link href="/generate-post" legacyBehavior>
-                  <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0">
-                  Generate a Post!
-                  </a>
-                </Link>
+                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="https://tally.so/r/m6xg7A" target="_blank">Join Waitlist and Give Us Feedback!</a>
               </div>
-              {/* <div data-aos="fade-up" data-aos-delay="600">
-                <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">Learn more</a>
-              </div> */}
+              <div data-aos="fade-up" data-aos-delay="600">
+                <Link href="/generate-post"> </Link>
+                <a className="btn text-white bg-purple-500 hover:bg-purple-400 w-full sm:w-auto sm:ml-4" href="/generate-post">Generate Post</a>
+              </div>
             </div>
           </div>
 

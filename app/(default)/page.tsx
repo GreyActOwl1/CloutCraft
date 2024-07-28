@@ -8,6 +8,7 @@ import Features from '@/components/features'
 import Newsletter from '@/components/newsletter'
 import Zigzag from '@/components/zigzag'
 import Testimonials from '@/components/testimonials'
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Zigzag />
       <Testimonials />
       <Newsletter />
+      <Link href="/default/generate">Generate a Post!</Link>
     </>
   )
 }

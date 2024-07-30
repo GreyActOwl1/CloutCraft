@@ -5,6 +5,7 @@ import { Inter, Architects_Daughter } from 'next/font/google'
 import Header from '@/components/ui/header'
 import Banner from '@/components/banner'
 import GoogleAnalytics from '@/components/googleanalytics'
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({
   subsets: ['latin'],

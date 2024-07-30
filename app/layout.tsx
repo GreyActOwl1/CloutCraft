@@ -38,6 +38,8 @@ export default function RootLayout({
           <Header />
           {children}
           <Banner />
+          <GoogleAnalytics/>
+          <Analytics/>
         </div>
       </body>
     </html>

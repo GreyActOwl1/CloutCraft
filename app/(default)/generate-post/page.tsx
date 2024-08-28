@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -85,7 +86,7 @@ export default function GeneratePost() {
                 </button>
 
                 <div className="mt-8 bg-gray-300 p-4 rounded-lg shadow-md w-full">
-                  <p className="text-gray-800 whitespace-pre-wrap">{result}</p>
+                  <p className="text-gray-800 whitespace-pre-wrap"><ReactMarkdown>{result}</ReactMarkdown></p>
                 </div>
               </div>
             </div>

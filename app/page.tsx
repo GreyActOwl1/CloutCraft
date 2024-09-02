@@ -55,7 +55,7 @@ export default function Home() {
       <p className="text-gray-600 text-sm font-bold">
       Join now 8and get 14 days of free premium membership!
         </p>
-        <h2 className="text-2xl font-bold">Supercharge your LinkedIn experience</h2>
+        <h2 className="text-2xl font-bold dark:text-blue-600">Supercharge your LinkedIn experience</h2>
         <p className="text-gray-600">
           Optimize your profile by creating engaging content and managing your network, using the power of Cloutcraft.
         </p>

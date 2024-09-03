@@ -9,23 +9,23 @@ export default function Hero() {
       {/* Left Section */}
       <div className="flex flex-col items-start sm:items-center lg:items-start gap-4 max-w-xl">
       <p className="text-gray-600 text-md font-medium dark:text-gray-200 tracking-wider uppercase">
-      Join now and get 14 days of free premium membership!
+      Try it out now!
         </p>
         <h2 className="text-3xl md:text-5xl font-bold text-blue-600">Supercharge your</h2>
         <h2 className="text-3xl md:text-5xl font-bold text-blue-600">LinkedIn experience</h2>
         <p className="text-gray-600 dark:text-gray-200 mt-2">
           Optimize your profile by creating engaging content and managing your network, using the power of Cloutcraft.
         </p>
-        <div className="flex gap-4 mt-2 ml-2">
-          <Button className="bg-blue-600 text-white px-4">Join Waitlist</Button>
-          <Button className="bg-white border border-blue-600 px-4 text-blue-600 hover:bg-blue-600 hover:text-white">Generate Post</Button>
+        <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2">
+          <Button className="bg-blue-600 text-white px-4 flex-1 ">Sign Up</Button>
+          <Button className="bg-white border border-blue-600 px-4 text-blue-600 hover:bg-blue-600 hover:text-white flex-1">Generate Post</Button>
         </div>
         <div className="flex items-center gap-2 mt-2">
             <Image src="/images/usersImage.png" alt="users Image" width={200} height={50} className="w-[90px] h-auto sm:w-[211px] sm:h-[58px] md:object-fill "/>
           <div className="text-yellow-500">
             <span className="text-md sm:text-xl">★★★★★</span>
           </div>
-          <span className="text-gray-500 text-sm sm:text-md md:text-lg dark:text-gray-200 whitespace-nowrap">Loved by thousands</span>
+          <span className="text-gray-500 text-sm sm:text-md md:text-lg dark:text-gray-200 whitespace">Loved by users for its simplicity and ease of use</span>
         </div>
       </div>
 

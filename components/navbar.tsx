@@ -1,106 +1,53 @@
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
-import NextLink from "next/link";
-import clsx from "clsx";
+"use client"
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { Logo } from './icons';
+import { navigationData } from '@/data';
+import { ThemeSwitch } from './theme-switch';
+import { RxHamburgerMenu,RxCross1 } from "react-icons/rx";
 
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
 
-export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
 
-  return (
-    <NextUINavbar maxWidth="xl" position="sticky">
-       <NavbarBrand as="li" className="gap-3 max-w-fit justify-start">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">Cloutcraft</p>
-          </NextLink>
-        </NavbarBrand>
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="end">
-       
-        <ul className="hidden md:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
-        <ThemeSwitch className="hidden md:flex" />
-      </NavbarContent>
-
-      
-
-      <NavbarContent className="md:hidden basis-1 pl-4" justify="end">
-        
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent>
-
-      <NavbarMenu>
-        {/* {searchInput} */}
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color="foreground"
-                href={item.href}
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+const Navbar = () => {
+    const [isModalOpen,setIsModalOpen] = useState(false);
+    return (
+        <div className='w-full h-auto items-center flex bg-gray-100 dark:bg-black'>
+            <div className='w-full md:max-w-6xl mx-auto h-auto p-4 flex justify-between items-center bg-gray-100 dark:bg-black'>
+       {/* Logo With Name*/}
+        <Link href="/" className='flex gap-x-0.5 whitespace-now'><Logo  className="-mt-0.5"/><p className="tracking-wide text-black dark:text-white font-bold text-lg md:text-xl">CloutCraft</p></Link>
+       {/* NavigationData Mapping*/}
+        <div className="hidden md:flex gap-x-6 pr-8">
+{
+navigationData.map((item,index)=> (
+    <Link key={index} className='text-gray-800 font-medium  hover:text-black text-sm dark:text-gray-100 dark:hover:text-white' href={item.href}>{item.pathName}</Link>
+))
+}
+<ThemeSwitch />
         </div>
-      </NavbarMenu>
-    </NextUINavbar>
-  );
-};
+        {/*HamBurger Menu For Mobile Screen*/}
+        <div className="flex gap-x-4 md:hidden relative">
+        <ThemeSwitch />
+        {isModalOpen ? 
+        (<RxCross1 size={24} onClick={()=>setIsModalOpen(false)} className='text-black cursor-pointer dark:text-white' />) 
+        :
+        (<RxHamburgerMenu size={24} onClick={()=>setIsModalOpen(true)} className='text-black cursor-pointer dark:text-white'/>)}
+        
+
+   {isModalOpen && (<div className='absolute flex flex-col items-center justify-center py-4 bg-white dark:bg-black border border-gray-400 dark:border-white gap-y-2 mt-8 right-4 w-32 rounded-lg'>
+    {
+        navigationData.map((item,index)=> (
+        <Link key={index} href={item.href} className='text-gray-800 font-medium  hover:text-black text-sm dark:text-gray-100 dark:hover:text-white'>{item.pathName}</Link>
+        ))
+    }
+   </div>)
+}    
+
+        <div>
+        
+        </div>
+        </div>
+        </div></div>
+    );
+}
+
+export default Navbar;

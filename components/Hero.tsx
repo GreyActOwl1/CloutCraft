@@ -1,3 +1,4 @@
+
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,7 +30,7 @@ export default function Hero() {
       </div>
 
       {/*Image Section*/}
-      <Link href="/Post"><Image src="/images/GeneratePostImage.png" alt="Generate Post section Image" width={550} height={550} className=" hidden place-self-center md:inline mt-4 lg:-mt-32 object-contain "/></Link>
+     <Image src="/images/GeneratePostImage.png" alt="Generate Post section Image" width={550} height={550} className=" hidden place-self-center md:inline mt-4 lg:-mt-32 object-contain md:object-fill"/>
     </div>
     
     </>

@@ -1,38 +1,93 @@
-
+"use client"
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import Link from "next/link";
+import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
+import { Textarea } from "@nextui-org/input";
+import ReactMarkdown from "react-markdown";
+import { useState, useRef } from "react";
+
+
 export default function Hero() {
+  const textboxRef = useRef<HTMLTextAreaElement>(null);
+  const [textboxValue, setTextboxValue] = useState("I am starting a new job at ...");
+
+  const handleButtonClick = () => {
+    textboxRef.current?.focus();
+    setTextboxValue("");
+  };
+
   return (
     <>
-    <div className="flex flex-col lg:flex-row pt-8 justify-center gap-8 p-4 bg-gray-100 dark:bg-black w-screen ">
-      {/* Left Section */}
-      <div className="flex flex-col items-start sm:items-center lg:items-start gap-4 max-w-xl">
-      <p className="text-gray-600 text-md font-medium dark:text-gray-200 tracking-wider uppercase">
-      Try it out now!
-        </p>
-        <h2 className="text-3xl md:text-5xl font-bold text-blue-600">Supercharge your</h2>
-        <h2 className="text-3xl md:text-5xl font-bold text-blue-600">LinkedIn experience</h2>
-        <p className="text-gray-600 dark:text-gray-200 mt-2">
-          Optimize your profile by creating engaging content and managing your network, using the power of Cloutcraft.
-        </p>
-        <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2">
-          <Button className="bg-blue-600 text-white px-4 flex-1 ">Sign Up</Button>
-          <Button className="bg-white border border-blue-600 px-4 text-blue-600 hover:bg-blue-600 hover:text-white flex-1">Generate Post</Button>
-        </div>
-        <div className="flex items-center gap-2 mt-2">
-            <Image src="/images/usersImage.png" alt="users Image" width={200} height={50} className="w-[90px] h-auto sm:w-[211px] sm:h-[58px] md:object-fill "/>
-          <div className="text-yellow-500">
-            <span className="text-md sm:text-xl">★★★★★</span>
+      <div className="flex flex-col lg:flex-row pt-8 justify-center gap-8 p-4 bg-gray-100 dark:bg-black w-screen ">
+        {/* Left Section */}
+        <div className="flex-1 flex-col items-start sm:items-center lg:items-start gap-4 max-w-xl">
+          <p className="text-gray-600 text-md font-medium dark:text-gray-200 tracking-wider uppercase">
+            Try it out now!
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
+            Supercharge your
+          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
+            LinkedIn experience
+          </h2>
+          <p className="text-gray-600 dark:text-gray-200 mt-2">
+            Optimize your profile by creating engaging content and managing your
+            network, using the power of Cloutcraft.
+          </p>
+          
+          <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2">
+            <Button className="bg-blue-600 text-white px-4 flex-1 ">
+              Sign Up
+            </Button>
+            <Button className="bg-white border border-blue-600 px-4 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
+            onClick={handleButtonClick}>
+              Generate Post
+            </Button>
           </div>
-          <span className="text-gray-500 text-sm sm:text-md md:text-lg dark:text-gray-200 whitespace">Loved by users for its simplicity and ease of use</span>
+          <div className="flex items-center gap-2 mt-2">
+            <Image
+              src="/images/usersImage.png"
+              alt="users Image"
+              width={200}
+              height={50}
+              className="w-[90px] h-auto sm:w-[211px] sm:h-[58px] md:object-fill "
+            />
+            <div className="text-yellow-500">
+              <span className="text-md sm:text-xl">★★★★★</span>
+            </div>
+            <span className="text-gray-500 text-sm sm:text-md md:text-lg dark:text-gray-200 whitespace">
+              Loved by users for its simplicity and ease of use
+            </span>
+          </div>
         </div>
-      </div>
+        {/*Right Section*/}{" "}
+        <Card className="flex flex-col gap-0 bg-blue-600 p-2 md:w-1/3 w-full">
+          <CardHeader className="text-3xl font-bold text-white pt-8">
+            Generate a post
+          </CardHeader>
+          <CardBody className="py-0">
+            <Textarea
+              ref={textboxRef}
+              placeholder="Type something..."
+              className="text-black  rounded-lg p-0 h-full"
+              minRows={10}
+              value={textboxValue}
+              onChange={(e) => setTextboxValue(e.target.value)}
+            />
+           
+          </CardBody>
 
-      {/*Image Section*/}
-     <Image src="/images/GeneratePostImage.png" alt="Generate Post section Image" width={550} height={550} className=" hidden place-self-center md:inline mt-4 lg:-mt-32 object-contain md:object-fill"/>
-    </div>
-    
+          <CardFooter>
+            <Button
+              className="bg-white text-blue-600"
+              // onClick={handleGeneratePost}
+            >
+              Generate
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
     </>
   );
 }
@@ -43,8 +98,6 @@ export default function Hero() {
 // import { Code } from "@nextui-org/code";
 // import { button as buttonStyles } from "@nextui-org/theme";
 // import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
-
-
 
 // import { siteConfig } from "@/config/site";
 // import { title, subtitle } from "@/components/primitives";
@@ -57,8 +110,6 @@ export default function Hero() {
 // import { useState } from 'react';
 // import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
 
-
-
 // const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY);
@@ -69,10 +120,9 @@ export default function Hero() {
 //   const result = await model.generateContent(prompt);
 //   const response = await result.response;
 //   const text = await response.text();
-  
+
 //   return text;
 // }
-
 
 // export default function Hero() {
 //   const [prompt, setPrompt] = useState('');
@@ -125,7 +175,7 @@ export default function Hero() {
 //                   <p className="text-gray-800 whitespace-pre-wrap"><ReactMarkdown>{result}</ReactMarkdown></p>
 //                 </div>
 //         </CardBody>
-        
+
 //         <CardFooter>
 //           <Button className="bg-white text-blue-600" onClick={handleGeneratePost}>Generate</Button>
 //         </CardFooter>

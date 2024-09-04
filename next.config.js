@@ -12,6 +12,16 @@ const nextConfig = {
                 destination: '/api/auth/register',
                 permanent: true,
             },
+            {
+                source: '/logout',
+                destination: '/api/auth/logout',
+                permanent: true,
+            },
+            {
+                source: '/dashboard',
+                destination: '/',
+                permanent: false,
+            }
         ]
     },
     env: {

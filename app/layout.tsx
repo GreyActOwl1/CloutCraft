@@ -11,7 +11,8 @@ import { fontSans } from "@/config/fonts";
 import Navbar from "@/components/navbar";
 import { Analytics } from "@vercel/analytics/react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
+import Hotjar from "@hotjar/browser";
 
 export const metadata: Metadata = {
   title: {
@@ -38,14 +39,19 @@ export default async function RootLayout({
 }) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+  const siteId = 5122355;
+  const hotjarVersion = 6;
+
+  Hotjar.init(siteId, hotjarVersion);
 
   return (
     <html suppressHydrationWarning lang="en">
       <head />
+
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased overflow-x-hidden",
-          fontSans.variable,
+          fontSans.variable
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>

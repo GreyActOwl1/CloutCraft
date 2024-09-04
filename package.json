@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@google/generative-ai": "^0.17.1",
+		"@hotjar/browser": "^1.0.9",
 		"@kinde-oss/kinde-auth-nextjs": "^2.3.8",
 		"@next/third-parties": "^14.2.7",
 		"@nextui-org/button": "2.0.37",

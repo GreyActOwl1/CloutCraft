@@ -21,31 +21,31 @@ export default function Hero() {
     <>
       <div className="flex flex-col lg:flex-row pt-8 justify-center gap-8 p-4 bg-gray-100 dark:bg-black w-screen ">
         {/* Left Section */}
-        <div className="flex-1 flex-col items-start sm:items-center lg:items-start gap-4 max-w-xl">
-          <p className="text-gray-600 text-md font-medium dark:text-gray-200 tracking-wider uppercase">
+        <div className="flex-1 flex-col items-start sm:items-center lg:items-start gap-4 gap-y-6 max-w-xl">
+          <p className="text-gray-600 text-md md:text-lg font-medium dark:text-gray-200 tracking-wider uppercase">
             Try it out now!
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
+          <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mt-2">
             Supercharge your
           </h2>
-          <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
+          <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mt-4">
             LinkedIn experience
           </h2>
-          <p className="text-gray-600 dark:text-gray-200 mt-2">
+          <p className="text-gray-600 dark:text-gray-200 mt-4">
             Optimize your profile by creating engaging content and managing your
             network, using the power of Cloutcraft.
           </p>
 
-          <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2">
-            <Button className="bg-blue-600 text-white px-4 flex-1 ">
+          <div className="flex gap-4 w-full md:w-8/12 md:ml-2 mt-6">
+            <Button className="bg-blue-600 text-white flex-1 ">
               Sign Up
             </Button>
-            <Button className="bg-white border border-blue-600 px-4 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
+            <Button className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
             onClick={handleButtonClick}>
               Generate Post
             </Button>
           </div>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="flex items-center gap-2 mt-6">
             <Image
               src="/images/usersImage.png"
               alt="users Image"
@@ -57,7 +57,7 @@ export default function Hero() {
               <span className="text-md sm:text-xl">★★★★★</span>
             </div>
             <span className="text-gray-500 text-sm sm:text-md md:text-lg dark:text-gray-200 whitespace">
-              Loved by users for its simplicity and ease of use
+              Loved by users
             </span>
           </div>
         </div>

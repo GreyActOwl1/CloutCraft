@@ -1,12 +1,8 @@
 export const navigationData = [
     {
      pathName :"About Us",
-     href : "About"
+     href : "about"
     },
-    {
-        pathName :"Join Waitlist",
-        href : "Waitlist"
-       },
        {
         pathName :"LogIn",
         href : "SignIn"

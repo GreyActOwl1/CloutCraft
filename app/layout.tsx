@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 // import { NavbarNext} from "@/components/navbarNext";
 import Navbar from "@/components/navbar";
-
+import { Analytics } from "@vercel/analytics/react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export const metadata: Metadata = {
@@ -52,6 +52,7 @@ export default async function RootLayout({
             <Navbar user={user} />
             <main className="mx-0 pt-16 px-auto flex-grow max-w-screen-2xl ">
               {children}
+              <Analytics />
             </main>
             <footer className="w-full flex items-center justify-center py-3">
               <Link

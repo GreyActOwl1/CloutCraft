@@ -4,9 +4,9 @@ import Features from './ui/features';
 
 const Home = () => {
   return (
-    <div>
+    <div className='bg-gray-100 dark:bg-black'>
       <Hero/>
-      {/* <Features/> */}
+      <Features/>
     </div>
   );
 }

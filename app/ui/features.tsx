@@ -1,8 +1,8 @@
 export default function Features() {
   return (
     <section>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-screen">
-        <div className="py-12 md:py-20">
+      <div className="flex flex-col lg:flex-row pt-8 justify-center gap-8 p-4  bg-grey-300 dark:bg-black w-screen ">
+        <div className="py-12 md:py-20 px-8">
 
           {/* Section header
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">

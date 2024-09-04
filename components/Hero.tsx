@@ -35,7 +35,7 @@ export default function Hero() {
             Optimize your profile by creating engaging content and managing your
             network, using the power of Cloutcraft.
           </p>
-          
+
           <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2">
             <Button className="bg-blue-600 text-white px-4 flex-1 ">
               Sign Up
@@ -83,7 +83,7 @@ export default function Hero() {
               className="bg-white text-blue-600"
               // onClick={handleGeneratePost}
             >
-              Generate
+              Create
             </Button>
           </CardFooter>
         </Card>

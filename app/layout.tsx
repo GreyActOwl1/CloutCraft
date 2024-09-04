@@ -10,6 +10,8 @@ import { fontSans } from "@/config/fonts";
 // import { NavbarNext} from "@/components/navbarNext";
 import Navbar from "@/components/navbar";
 
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -28,11 +30,14 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
   return (
     <html suppressHydrationWarning lang="en">
       <head />
@@ -44,7 +49,7 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen bg-gray-100 dark:bg-black">
-            <Navbar/>
+            <Navbar user={user} />
             <main className="mx-0 pt-16 px-auto flex-grow max-w-screen-2xl ">
               {children}
             </main>

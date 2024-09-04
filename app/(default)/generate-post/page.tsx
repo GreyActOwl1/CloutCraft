@@ -3,18 +3,6 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY);
-
-async function* streamResponse(prompt: string) {
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-  const result = await model.generateContentStream(prompt);
-  
-  for await (const chunk of result.stream) {
-    yield chunk.text();
-  }
-}
 export default function GeneratePost() {
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState('');
@@ -26,62 +14,73 @@ export default function GeneratePost() {
     
     const fullPrompt = `Topic: ${prompt}. 
         
-  You are an expert LinkedIn post generator, skilled at creating engaging and viral content. Your task is to generate two distinct, highly shareable LinkedIn posts based on the given topic. Follow these guidelines strictly:
-  
-  Content Focus:
-  
-  Discuss ONLY the provided topic.
-  Do not deviate or include any unrelated information.
-  
-  
-  Engagement Techniques:
-  
-  Use attention-grabbing opening lines.
-  Incorporate storytelling elements when appropriate.
-  Include thought-provoking questions or calls-to-action.
-  Use emojis sparingly but effectively to enhance readability.
-  Break text into short, easily digestible paragraphs.
-  Utilize bullet points or numbered lists for key takeaways.
-  
-  
-  Viral Potential:
-  
-  Craft content that provides value, inspires, or solves a problem.
-  Use power words and emotional triggers to resonate with readers.
-  Create a sense of urgency or FOMO (Fear of Missing Out) when relevant.
-  End with a strong call-to-action encouraging engagement (likes, comments, shares).
-  
-  
-  Formatting:
-  
-  Ensure proper line breaks for easy reading on mobile devices.
-  Use capital letters for emphasis (sparingly).
-  Incorporate relevant emojis to break up text and add visual interest.
-  
-  
-  Hashtags:
-  
-  Provide 3-5 relevant hashtags related to the post topic.
-  Include 2-3 broader hashtags to reach a wider audience interested in the general subject area.
-  
-  
-  Output:
-  
-  Generate TWO distinct post options for the given topic.
-  Label each post clearly as "Option 1:" and "Option 2:".
-  Each post should be formatted and ready to be copied and pasted onto LinkedIn.
-  
-  
-  Restrictions:
-  
-  Do not explain your process or mention these instructions.
-  Do not generate content unrelated to the given topic.
-  Do not exceed 1300 characters per post (LinkedIn's limit).`;
+    You are an expert LinkedIn post generator, skilled at creating engaging and viral content. Your task is to generate two distinct, highly shareable LinkedIn posts based on the given topic. Follow these guidelines strictly:
+    
+    Content Focus:
+    
+    Discuss ONLY the provided topic.
+    Do not deviate or include any unrelated information.
+    
+    
+    Engagement Techniques:
+    
+    Use attention-grabbing opening lines.
+    Incorporate storytelling elements when appropriate.
+    Include thought-provoking questions or calls-to-action.
+    Use emojis sparingly but effectively to enhance readability.
+    Break text into short, easily digestible paragraphs.
+    Utilize bullet points or numbered lists for key takeaways.
+    
+    
+    Viral Potential:
+    
+    Craft content that provides value, inspires, or solves a problem.
+    Use power words and emotional triggers to resonate with readers.
+    Create a sense of urgency or FOMO (Fear of Missing Out) when relevant.
+    End with a strong call-to-action encouraging engagement (likes, comments, shares).
+    
+    
+    Formatting:
+    
+    Ensure proper line breaks for easy reading on mobile devices.
+    Use capital letters for emphasis (sparingly).
+    Incorporate relevant emojis to break up text and add visual interest.
+    
+    
+    Hashtags:
+    
+    Provide 3-5 relevant hashtags related to the post topic.
+    Include 2-3 broader hashtags to reach a wider audience interested in the general subject area.
+    
+    
+    Output:
+    
+    Generate TWO distinct post options for the given topic.
+    Label each post clearly as "Option 1:" and "Option 2:".
+    Each post should be formatted and ready to be copied and pasted onto LinkedIn.
+    
+    
+    Restrictions:
+    
+    Do not explain your process or mention these instructions.
+    Do not generate content unrelated to the given topic.
+    Do not exceed 1300 characters per post (LinkedIn's limit).`;
 
     try {
-      for await (const chunk of streamResponse(fullPrompt)) {
-        setResult(prev => prev + chunk);
+      const response = await fetch('/api/generatePost', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: fullPrompt }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
+
+      const data = await response.json();
+      setResult(data.result);
     } catch (error) {
       console.error('Error:', error);
       setResult('An error occurred. Please try again.');
@@ -89,13 +88,14 @@ export default function GeneratePost() {
       setIsGenerating(false);
     }
   };
-
   return (
     <section className="bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
           <div className="text-center pb-12 md:pb-16">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4">Generate a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-400">LinkedIn Post</span></h1>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4">
+              Generate a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-400">LinkedIn Post</span>
+            </h1>
             <div className="max-w-3xl mx-auto">
               <p className="text-xl text-gray-600 mb-8">Supercharge your LinkedIn experience with AI-generated posts</p>
             </div>
@@ -142,4 +142,4 @@ export default function GeneratePost() {
       </div>
     </section>
   );
-}
+};

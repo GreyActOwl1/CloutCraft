@@ -11,6 +11,7 @@ import { fontSans } from "@/config/fonts";
 import Navbar from "@/components/navbar";
 import { Analytics } from "@vercel/analytics/react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: {
@@ -52,6 +53,7 @@ export default async function RootLayout({
             <Navbar user={user} />
             <main className="mx-0 pt-16 px-auto flex-grow max-w-screen-2xl ">
               {children}
+              <GoogleAnalytics gaId="G-RDD5K23M5X" />
               <Analytics />
             </main>
             <footer className="w-full flex items-center justify-center py-3">

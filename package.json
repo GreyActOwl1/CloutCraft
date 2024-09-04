@@ -11,6 +11,7 @@
 	"dependencies": {
 		"@google/generative-ai": "^0.17.1",
 		"@kinde-oss/kinde-auth-nextjs": "^2.3.8",
+		"@next/third-parties": "^14.2.7",
 		"@nextui-org/button": "2.0.37",
 		"@nextui-org/card": "^2.0.33",
 		"@nextui-org/code": "2.0.32",

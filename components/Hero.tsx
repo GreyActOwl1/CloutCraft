@@ -6,6 +6,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Textarea } from "@nextui-org/input";
 import ReactMarkdown from "react-markdown";
 import { useState, useRef } from "react";
+import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 
 
 export default function Hero() {
@@ -37,11 +38,15 @@ export default function Hero() {
           </p>
 
           <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2">
-            <Button className="bg-blue-600 text-white px-4 flex-1 ">
-              Sign Up
-            </Button>
-            <Button className="bg-white border border-blue-600 px-4 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
-            onClick={handleButtonClick}>
+            <RegisterLink className="flex-1">
+              <Button className="bg-blue-600 text-white w-full">
+                Sign Up
+              </Button>
+            </RegisterLink>
+            <Button 
+              className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
+              onClick={handleButtonClick}
+            >
               Generate Post
             </Button>
           </div>

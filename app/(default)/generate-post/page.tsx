@@ -86,7 +86,7 @@ Do not exceed 1300 characters per post (LinkedIn's limit).`;
   };
 
   return (
-    <section className="bg-white">
+    <section className="bg-gray-100 dark:bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
           <div className="text-center pb-12 md:pb-16">
@@ -94,11 +94,11 @@ Do not exceed 1300 characters per post (LinkedIn's limit).`;
               Generate a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-400">LinkedIn Post</span>
             </h1>
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-600 mb-8">Supercharge your LinkedIn experience with AI-generated posts</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">Supercharge your LinkedIn experience with AI-generated posts</p>
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-purple-600 shadow-lg rounded-lg overflow-hidden">
+          <div className="max-w-3xl mx-auto bg-blue-600 shadow-lg rounded-lg overflow-hidden">
             <div className="p-6">
               <div className="mb-6">
                 <h2 className="text-xl font-semibold text-white mb-2">Tips for Best Results</h2>
@@ -116,7 +116,7 @@ Do not exceed 1300 characters per post (LinkedIn's limit).`;
                 onChange={(e) => setPrompt(e.target.value)}
               />
               <button 
-                className="w-full bg-white text-purple-600 font-bold py-2 px-4 rounded transition duration-150 ease-in-out hover:bg-gray-100"
+                className="w-full bg-white text-blue-600 font-bold py-2 px-4 rounded transition duration-150 ease-in-out hover:bg-gray-100"
                 onClick={handleGeneratePost}
                 disabled={isGenerating}
               >

@@ -35,7 +35,7 @@ const Navbar = ({ user }: { user: KindeUser<any> | null }) => {
                     <ThemeSwitch />
                 </div>
 
-                <div className="md:hidden relative">
+                <div className="md:hidden flex">
                     <ThemeSwitch />
                     {isModalOpen ? (
                         <RxCross1 size={24} onClick={() => setIsModalOpen(false)} className='text-black cursor-pointer dark:text-white ml-4' />

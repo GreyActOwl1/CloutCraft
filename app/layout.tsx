@@ -62,7 +62,7 @@ export default async function RootLayout({
               <GoogleAnalytics gaId="G-RDD5K23M5X" />
               <Analytics />
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
+            <footer className="w-full flex items-center justify-center py-3 bg-gray-100 dark:bg-black">
               <Link
                 isExternal
                 className="flex items-center gap-1 text-current"
@@ -70,7 +70,7 @@ export default async function RootLayout({
                 title="nextui.org homepage"
               >
                 <span className="text-default-600">Made by the</span>
-                <p className="text-primary">CloutCraft Team</p>
+                <Link href="/about"><p className="text-primary">CloutCraft Team</p></Link>
               </Link>
             </footer>
           </div>

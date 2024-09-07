@@ -3,12 +3,8 @@ export const navigationData = [
      pathName :"About Us",
      href : "About"
     },
-    {
-        pathName :"Join Waitlist",
-        href : "Waitlist"
-       },
-]
 
+]
 
 export const teamDetails = [
     {

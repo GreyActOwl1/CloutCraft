@@ -21,7 +21,7 @@ const Navbar = ({ user }: { user: KindeUser<any> | null }) => {
 
                 <div className="hidden md:flex gap-x-6 items-center">
                     {navigationData.map((item, index) => (
-                        <Link key={index} className='text-gray-800 font-medium hover:text-black text-sm dark:text-gray-100 dark:hover:text-white' href={item.href}>{item.pathName}</Link>
+                        <Link key={index} className='text-gray-800  hover:text-black dark:text-gray-100 dark:hover:text-white' href={item.href}>{item.pathName}</Link>
                     ))}
                     {user ? (
                         <LogoutLink>Logout</LogoutLink>
@@ -46,17 +46,17 @@ const Navbar = ({ user }: { user: KindeUser<any> | null }) => {
                     {isModalOpen && (
                         <div className='absolute flex flex-col items-center justify-center py-4 bg-white dark:bg-black border border-gray-400 dark:border-white gap-y-2 mt-8 right-0 w-32 rounded-lg'>
                             {navigationData.map((item, index) => (
-                                <Link key={index} href={item.href} className='text-gray-800 font-medium hover:text-black text-sm dark:text-gray-100 dark:hover:text-white'>{item.pathName}</Link>
+                                <Link key={index} href={item.href} className='text-gray-800  text-md hover:text-black dark:text-gray-100 dark:hover:text-white h-full w-full text-center hover:bg-gray-300 dark:hover:bg-gray-600'>{item.pathName}</Link>
                                 
                             ))}
                             {user ? (
                                 <>
-                                <LogoutLink>Logout</LogoutLink>
+                                <LogoutLink className='w-full h-full text-center hover:bg-gray-300 dark:hover:bg-gray-600'>Logout</LogoutLink>
                                 </>
                             ) : (
                                 <>
-                                    <LoginLink>Login</LoginLink>
-                                    <RegisterLink>Register</RegisterLink>
+                                    <LoginLink className='w-full h-full text-center hover:bg-gray-300 dark:hover:bg-gray-600'>Login</LoginLink>
+                                    <RegisterLink className='w-full h-full text-center hover:bg-gray-300 dark:hover:bg-gray-600'>Register</RegisterLink>
                                 </>
                             )}
                         </div>

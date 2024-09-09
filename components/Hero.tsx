@@ -14,10 +14,47 @@ export default function Hero() {
   const textboxRef = useRef<HTMLTextAreaElement>(null);
   const [textboxValue, setTextboxValue] = useState("I am starting a new job at ...");
 
-  const handleButtonClick = () => {
+  const focusPromptInput = () => {
     textboxRef.current?.focus();
     setTextboxValue("");
   };
+
+  const [prompt, setPrompt] = useState('');
+  const [result, setResult] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleGeneratePost = async () => {
+    setIsGenerating(true);
+    setResult('');
+    
+    try {
+      const response = await fetch('/api/generatePost', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setResult(data.result);
+      setTextboxValue(data.result);
+      console.log(data.result);
+    } catch (error) {
+      console.error('Error:', error);
+      setResult('An error occurred. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
+    // setTextboxValue(result);
+    return result;
+  };
+
+
   const router = useRouter();
 
   return (
@@ -47,7 +84,7 @@ export default function Hero() {
             </RegisterLink>
             <Button 
               className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
-              onClick={() => router.push('/generate-post')}
+              onClick={focusPromptInput}
             >
               Generate Post
             </Button>
@@ -74,13 +111,16 @@ export default function Hero() {
             Generate a post
           </CardHeader>
           <CardBody className="py-0">
+            <ReactMarkdown></ReactMarkdown>
             <Textarea
               ref={textboxRef}
               placeholder="Type something..."
               className="text-black  rounded-lg p-0 h-full"
               minRows={10}
               value={textboxValue}
-              onChange={(e) => setTextboxValue(e.target.value)}
+              onChange={(e) => {setTextboxValue(e.target.value);
+                setPrompt(e.target.value);
+              }}
             />
            
           </CardBody>
@@ -88,7 +128,7 @@ export default function Hero() {
           <CardFooter>
             <Button
               className="bg-white text-blue-600"
-              onClick={() => router.push('/generate-post')}
+              onClick={handleGeneratePost}
             >
               Create
             </Button>

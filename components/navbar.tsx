@@ -24,7 +24,27 @@ const Navbar = ({ user }: { user: KindeUser<any> | null }) => {
                         <Link key={index} className='text-gray-800  hover:text-black dark:text-gray-100 dark:hover:text-white' href={item.href}>{item.pathName}</Link>
                     ))}
                     {user ? (
+                        <>
                         <LogoutLink>Logout</LogoutLink>
+                        
+                            <div className="relative group">
+                                <img
+                                    src={user.picture || '/default-avatar.png'}
+                                    alt="User Avatar"
+                                    className="w-8 h-8 rounded-full cursor-pointer"
+                                />
+                                <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-8 bg-gray-800 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                    {user.given_name || user.email}
+                                </span>
+                            </div>
+                    
+                            {/* <span className="text-gray-800 dark:text-gray-100">
+                                {user.given_name || user.email}
+                            </span> */}
+                        
+                        
+                        </>
+                           
                     ) : (
                         <>
                             <LoginLink>Login</LoginLink>

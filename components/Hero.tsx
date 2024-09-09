@@ -5,19 +5,64 @@ import Link from "next/link";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Textarea } from "@nextui-org/input";
 import ReactMarkdown from "react-markdown";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 import { useRouter } from "next/navigation";
-
 
 export default function Hero() {
   const textboxRef = useRef<HTMLTextAreaElement>(null);
   const [textboxValue, setTextboxValue] = useState("I am starting a new job at ...");
 
-  const handleButtonClick = () => {
+  const focusPromptInput = () => {
     textboxRef.current?.focus();
     setTextboxValue("");
   };
+
+  const [prompt, setPrompt] = useState('');
+  const [result, setResult] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    // Check localStorage when component mounts
+    const buttonDisabled = localStorage.getItem('createButtonDisabled');
+    setIsButtonDisabled(buttonDisabled === 'true');
+  }, []);
+
+  const handleGeneratePost = async () => {
+    setIsGenerating(true);
+    setResult('');
+    
+    try {
+      const response = await fetch('/api/generatePost', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setResult(data.result);
+      setTextboxValue(data.result);
+      console.log(data.result);
+      setIsButtonDisabled(true);
+      localStorage.setItem('createButtonDisabled', 'true');
+    } catch (error) {
+      console.error('Error:', error);
+      setResult('An error occurred. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
+    // setTextboxValue(result);
+    return result;
+  };
+
+
   const router = useRouter();
 
   return (
@@ -26,7 +71,7 @@ export default function Hero() {
         {/* Left Section */}
         <div className="flex-1 flex-col items-start sm:items-center lg:items-start gap-4 max-w-xl">
           <p className="text-gray-600 text-md font-medium dark:text-gray-200 tracking-wider uppercase">
-            Try it out now!
+            Sign up for free now!
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
             Supercharge your
@@ -47,7 +92,7 @@ export default function Hero() {
             </RegisterLink>
             <Button 
               className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
-              onClick={() => router.push('/generate-post')}
+              onClick={focusPromptInput}
             >
               Generate Post
             </Button>
@@ -74,23 +119,27 @@ export default function Hero() {
             Generate a post
           </CardHeader>
           <CardBody className="py-0">
+            <ReactMarkdown></ReactMarkdown>
             <Textarea
               ref={textboxRef}
               placeholder="Type something..."
               className="text-black  rounded-lg p-0 h-full"
               minRows={10}
               value={textboxValue}
-              onChange={(e) => setTextboxValue(e.target.value)}
+              onChange={(e) => {setTextboxValue(e.target.value);
+                setPrompt(e.target.value);
+              }}
             />
            
           </CardBody>
 
           <CardFooter>
             <Button
-              className="bg-white text-blue-600"
-              onClick={() => router.push('/generate-post')}
+              className="bg-white text-blue-600 "
+              onClick={handleGeneratePost}
+              isDisabled={isButtonDisabled}
             >
-              Create
+             {isButtonDisabled ? `Sign Up to create more` : 'Create'}
             </Button>
           </CardFooter>
         </Card>

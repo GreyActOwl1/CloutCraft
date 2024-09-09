@@ -25,6 +25,7 @@ const Navbar = ({ user }: { user: KindeUser<any> | null }) => {
                     ))}
                     {user ? (
                         <>
+                        <Link href="/generate-post" className='text-gray-800  hover:text-black dark:text-gray-100 dark:hover:text-white'>Generate Post</Link>
                         <LogoutLink>Logout</LogoutLink>
                         
                             <div className="relative group">

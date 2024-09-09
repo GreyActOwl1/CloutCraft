@@ -19,7 +19,7 @@ const nextConfig = {
             },
             {
                 source: '/dashboard',
-                destination: '/',
+                destination: '/generate-post',
                 permanent: false,
             }
         ]

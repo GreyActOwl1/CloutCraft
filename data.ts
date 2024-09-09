@@ -1,7 +1,7 @@
 export const navigationData = [
     {
      pathName :"About Us",
-     href : "About"
+     href : "/about"
     },
 
 ]

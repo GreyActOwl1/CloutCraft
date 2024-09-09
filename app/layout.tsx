@@ -62,15 +62,13 @@ export default async function RootLayout({
               <GoogleAnalytics gaId="G-RDD5K23M5X" />
               <Analytics />
             </main>
-            <footer className="w-full flex items-center justify-center py-3 bg-gray-100 dark:bg-black">
+            <footer className="w-full flex items-center justify-center py-3">
               <Link
-                isExternal
                 className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
+                href="/about"
               >
                 <span className="text-default-600">Made by the</span>
-                <Link href="/about"><p className="text-primary">CloutCraft Team</p></Link>
+                <p className="text-primary">CloutCraft Team</p>
               </Link>
             </footer>
           </div>

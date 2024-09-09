@@ -7,6 +7,7 @@ import { Textarea } from "@nextui-org/input";
 import ReactMarkdown from "react-markdown";
 import { useState, useRef } from "react";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
+import { useRouter } from "next/navigation";
 
 
 export default function Hero() {
@@ -17,6 +18,7 @@ export default function Hero() {
     textboxRef.current?.focus();
     setTextboxValue("");
   };
+  const router = useRouter();
 
   return (
     <>
@@ -45,7 +47,7 @@ export default function Hero() {
             </RegisterLink>
             <Button 
               className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white flex-1"
-              onClick={handleButtonClick}
+              onClick={() => router.push('/generate-post')}
             >
               Generate Post
             </Button>
@@ -86,7 +88,7 @@ export default function Hero() {
           <CardFooter>
             <Button
               className="bg-white text-blue-600"
-              // onClick={handleGeneratePost}
+              onClick={() => router.push('/generate-post')}
             >
               Create
             </Button>

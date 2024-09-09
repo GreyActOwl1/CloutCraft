@@ -5,10 +5,9 @@ import Link from "next/link";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Textarea } from "@nextui-org/input";
 import ReactMarkdown from "react-markdown";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 import { useRouter } from "next/navigation";
-
 
 export default function Hero() {
   const textboxRef = useRef<HTMLTextAreaElement>(null);
@@ -22,6 +21,13 @@ export default function Hero() {
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    // Check localStorage when component mounts
+    const buttonDisabled = localStorage.getItem('createButtonDisabled');
+    setIsButtonDisabled(buttonDisabled === 'true');
+  }, []);
 
   const handleGeneratePost = async () => {
     setIsGenerating(true);
@@ -44,6 +50,8 @@ export default function Hero() {
       setResult(data.result);
       setTextboxValue(data.result);
       console.log(data.result);
+      setIsButtonDisabled(true);
+      localStorage.setItem('createButtonDisabled', 'true');
     } catch (error) {
       console.error('Error:', error);
       setResult('An error occurred. Please try again.');
@@ -63,7 +71,7 @@ export default function Hero() {
         {/* Left Section */}
         <div className="flex-1 flex-col items-start sm:items-center lg:items-start gap-4 max-w-xl">
           <p className="text-gray-600 text-md font-medium dark:text-gray-200 tracking-wider uppercase">
-            Try it out now!
+            Sign up for free now!
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
             Supercharge your
@@ -127,10 +135,11 @@ export default function Hero() {
 
           <CardFooter>
             <Button
-              className="bg-white text-blue-600"
+              className="bg-white text-blue-600 "
               onClick={handleGeneratePost}
+              isDisabled={isButtonDisabled}
             >
-              Create
+             {isButtonDisabled ? `Sign Up to create more` : 'Create'}
             </Button>
           </CardFooter>
         </Card>

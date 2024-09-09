@@ -40,10 +40,9 @@ export async function POST(req: NextRequest) {
     Include 2-3 broader hashtags to reach a wider audience interested in the general subject area.
     
     Output:
-    Generate TWO distinct post options for the given topic.
+    Generate a single distinct post for the given topic.
     Every Heading must be in bold text especially the starting title of the post and every post should contains heading.
-    Label each post clearly as "Option 1:" and "Option 2:".
-    Each post should be formatted and ready to be copied and pasted onto LinkedIn.
+    
     
     Restrictions:
     Do not explain your process or mention these instructions.

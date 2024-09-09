@@ -78,7 +78,7 @@ export default function GeneratePost() {
           {result && (
             <div className="max-w-3xl mx-auto mt-8 bg-white shadow-lg rounded-lg overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">Generated Posts</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mb-4">Generated Post</h2>
                 <div className="prose max-w-none text-black">
                   <ReactMarkdown>{result}</ReactMarkdown>
                 </div>

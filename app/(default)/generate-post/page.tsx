@@ -36,9 +36,9 @@ export default function GeneratePost() {
   };
 
   return (
-    <section className="bg-white dark:bg-black">
+    <section className="bg-gray-100 dark:bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+        <div className="pt-20 pb-12  md:pb-20">
           <div className="text-center pb-12 md:pb-16">
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter pt-8 text-gray-800 dark:text-white tracking-tighter mb-4">
               Generate a LinkedIn Post
@@ -50,7 +50,7 @@ export default function GeneratePost() {
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-purple-600 shadow-lg rounded-lg overflow-hidden">
+          <div className="max-w-3xl mx-auto bg-blue-600 shadow-lg rounded-lg overflow-hidden">
             <div className="p-6">
               <div className="mb-6">
                 <h2 className="text-xl font-semibold text-white mb-2">
@@ -79,7 +79,7 @@ export default function GeneratePost() {
                 onChange={(e) => setPrompt(e.target.value)}
               ></textarea>
               <button
-                className="w-full bg-white text-purple-600 font-bold py-2 px-4 rounded transition duration-150 ease-in-out hover:bg-gray-100"
+                className="w-full bg-white text-blue-700 font-bold py-2 px-4 rounded transition duration-150 ease-in-out hover:bg-gray-100"
                 onClick={handleGeneratePost}
                 disabled={isGenerating}
               >
@@ -91,7 +91,7 @@ export default function GeneratePost() {
           {result && (
             <div className="max-w-3xl mx-auto mt-8 bg-white shadow-lg rounded-lg overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                <h2 className="text-xl font-semibold text-blue-600 mb-4">
                   Generated Post
                 </h2>
                 <div className="prose max-w-none text-black">

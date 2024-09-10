@@ -73,18 +73,18 @@ export default function Hero() {
           <p className="text-gray-600 text-md font-medium dark:text-gray-200 tracking-wider uppercase">
             Sign up for free now!
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
+          <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mt-2">
             Supercharge your
           </h2>
           <h2 className="text-3xl md:text-5xl font-bold text-blue-600">
             LinkedIn experience
           </h2>
-          <p className="text-gray-600 dark:text-gray-200 mt-2">
+          <p className="text-gray-600 dark:text-gray-200 mt-4">
             Optimize your profile by creating engaging content and managing your
             network, using the power of Cloutcraft.
           </p>
 
-          <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2">
+          <div className="flex gap-4 mt-2 w-full md:w-8/12 md:ml-2 mt-4">
             <RegisterLink className="flex-1">
               <Button className="bg-blue-600 text-white w-full">
                 Sign Up
@@ -97,7 +97,7 @@ export default function Hero() {
               Generate Post
             </Button>
           </div>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="flex items-center gap-2 mt-6">
             <Image
               src="/images/usersImage.png"
               alt="users Image"
